@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/ajungmoon/catkin_ws/src/fri-library-ros/build/devel/setup.sh

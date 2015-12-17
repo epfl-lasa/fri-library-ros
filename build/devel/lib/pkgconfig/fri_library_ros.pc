@@ -1,0 +1,8 @@
+prefix=/home/ajungmoon/catkin_ws/src/fri-library-ros/build/devel
+
+Name: fri_library_ros
+Description: Description of fri_library_ros
+Version: 0.0.0
+Cflags: -I/home/ajungmoon/catkin_ws/src/fri-library-ros/include -I/usr/include/eigen3
+Libs: -L/home/ajungmoon/catkin_ws/src/fri-library-ros/build/devel/lib -lfri_library_ros
+Requires: 
