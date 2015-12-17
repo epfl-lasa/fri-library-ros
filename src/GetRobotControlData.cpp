@@ -58,14 +58,12 @@
 #include <pthread.h>
 #include <fricomm.h>
 
-
 // ****************************************************************
 // GetMeasuredJointPositions()
 //
 void FastResearchInterface::GetMeasuredJointPositions(float *MeasuredJointPositions)
 {
 	unsigned int		i	=	0;
-
 	pthread_mutex_lock(&(this->MutexForControlData));
 	for (i = 0; i < LBR_MNJ; i++)
 	{
@@ -75,6 +73,31 @@ void FastResearchInterface::GetMeasuredJointPositions(float *MeasuredJointPositi
 
 	return;
 }
+
+void FastResearchInterface::GetMeasuredJointPositions(std::vector<double>& MeasuredJointPositions){
+    unsigned int		i	=	0;
+    pthread_mutex_lock(&(this->MutexForControlData));
+    for (i = 0; i < LBR_MNJ; i++)
+    {
+        MeasuredJointPositions[i]	=	this->ReadData.data.msrJntPos[i];
+    }
+    pthread_mutex_unlock(&(this->MutexForControlData));
+
+    return;
+}
+
+/*void FastResearchInterface::GetMeasuredJointPosition2(Eigen::VectorXd& MeasruedJointPositions){
+    unsigned int		i	=	0;
+
+    pthread_mutex_lock(&(this->MutexForControlData));
+    for (i = 0; i < LBR_MNJ; i++)
+    {
+        MeasruedJointPositions(i)	=	this->ReadData.data.msrJntPos[i];
+    }
+    pthread_mutex_unlock(&(this->MutexForControlData));
+
+    //return;
+}*/
 
 
 // ****************************************************************
@@ -129,6 +152,19 @@ void FastResearchInterface::GetMeasuredJointTorques(float *MeasuredJointTorques)
 	pthread_mutex_unlock(&(this->MutexForControlData));
 
 	return;
+}
+
+void FastResearchInterface::GetMeasuredJointTorques(std::vector<double>& MeasuredJointTorques){
+    unsigned int		i	=	0;
+
+    pthread_mutex_lock(&(this->MutexForControlData));
+    for (i = 0; i < LBR_MNJ; i++)
+    {
+        MeasuredJointTorques[i]	=	this->ReadData.data.msrJntTrq[i];
+    }
+    pthread_mutex_unlock(&(this->MutexForControlData));
+
+    return;
 }
 
 

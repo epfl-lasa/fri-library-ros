@@ -76,6 +76,19 @@ void FastResearchInterface::SetCommandedJointPositions(const float *CommandedJoi
 	return;
 }
 
+void FastResearchInterface::SetCommandedJointPositions(const std::vector<double>& CommandedJointPositions){
+    unsigned int		i	=	0;
+
+    pthread_mutex_lock(&(this->MutexForControlData));
+    for (i = 0; i < LBR_MNJ; i++)
+    {
+        this->CommandData.cmd.jntPos[i]	=	CommandedJointPositions[i];
+    }
+    pthread_mutex_unlock(&(this->MutexForControlData));
+
+    return;
+}
+
 
 // ****************************************************************
 // SetCommandedJointTorques()

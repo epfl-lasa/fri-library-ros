@@ -95,6 +95,8 @@ unsigned int FastResearchInterface::GetCurrentControlScheme(void)
 	case FRI_CTRL_JNT_IMP:
 		return(FastResearchInterface::JOINT_IMPEDANCE_CONTROL);
 		break;
+    case FRI_CTRL_OTHER:
+        return(FastResearchInterface::NONE);
 	}
 
 	return(0);

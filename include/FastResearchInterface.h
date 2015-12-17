@@ -60,6 +60,8 @@
 #include <DataLogging.h>
 #include <fricomm.h>
 #include <pthread.h>
+#include <Eigen/Eigen>
+#include <vector>
 
 
 //  ---------------------- Doxygen info ----------------------
@@ -210,6 +212,8 @@ public:
 //  ----------------------------------------------------------
 	enum LWRControlModes
 	{
+        //! \brief no control set
+        NONE = 0,
 		//! \brief Joint position control
 		JOINT_POSITION_CONTROL	=	10,
 		//! \brief Cartesian impedance control
@@ -351,6 +355,10 @@ public:
 	int StopRobot(void);
 
 
+
+
+
+
 //  ---------------------- Doxygen info ----------------------
 //! \fn void GetMeasuredJointPositions(float *MeasuredJointPositions)
 //!
@@ -364,6 +372,8 @@ public:
 //! \sa tFriMsrData
 //  ----------------------------------------------------------
 	void GetMeasuredJointPositions(float *MeasuredJointPositions);
+
+    void GetMeasuredJointPositions(std::vector<double>& MeasuredJointPositions);
 
 
 //  ---------------------- Doxygen info ----------------------
@@ -409,6 +419,8 @@ public:
 //! \sa tFriMsrData
 //  ----------------------------------------------------------
 	void GetMeasuredJointTorques(float *MeasuredJointTorques);
+
+    void GetMeasuredJointTorques(std::vector<double>& MeasuredJointTorques);
 
 
 //  ---------------------- Doxygen info ----------------------
@@ -502,6 +514,8 @@ public:
 //! \sa tFriCmdData
 //  ----------------------------------------------------------
 	void SetCommandedJointPositions(const float *CommandedJointPositions);
+
+    void SetCommandedJointPositions(const std::vector<double>& CommandedJointPositions);
 
 
 //  ---------------------- Doxygen info ----------------------
