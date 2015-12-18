@@ -437,6 +437,7 @@ public:
 //  ----------------------------------------------------------
 	void GetEstimatedExternalJointTorques(float *EstimatedExternalJointTorques);
 
+    void GetEstimatedExternalJointTorques(std::vector<double>& EstimatedExternalJointTorques);
 
 //  ---------------------- Doxygen info ----------------------
 //! \fn void GetMeasuredCartPose(float *MeasuredCartPose)
@@ -497,6 +498,7 @@ public:
 //  ----------------------------------------------------------
 	void GetEstimatedExternalCartForcesAndTorques(float *EstimatedExternalCartForcesAndTorques);
 
+    void GetEstimatedExternalCartForcesAndTorques(std::vector<double>& EstimatedExternalCartForcesAndTorques);
 
 //  ---------------------- Doxygen info ----------------------
 //! \fn void SetCommandedJointPositions(const float *CommandedJointPositions)

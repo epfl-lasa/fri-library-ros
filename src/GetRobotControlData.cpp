@@ -185,6 +185,19 @@ void FastResearchInterface::GetEstimatedExternalJointTorques(float *EstimatedExt
 	return;
 }
 
+void FastResearchInterface::GetEstimatedExternalJointTorques(std::vector<double>& EstimatedExternalJointTorques)
+{
+    unsigned int		i	=	0;
+
+    pthread_mutex_lock(&(this->MutexForControlData));
+    for (i = 0; i < LBR_MNJ; i++)
+    {
+        EstimatedExternalJointTorques[i]	=	this->ReadData.data.estExtJntTrq[i];
+    }
+    pthread_mutex_unlock(&(this->MutexForControlData));
+
+    return;
+}
 
 // ****************************************************************
 // GetMeasuredCartPose()
@@ -255,5 +268,19 @@ void FastResearchInterface::GetEstimatedExternalCartForcesAndTorques(float *Esti
 	pthread_mutex_unlock(&(this->MutexForControlData));
 
 	return;
+}
+
+void FastResearchInterface::GetEstimatedExternalCartForcesAndTorques(std::vector<double>& EstimatedExternalCartForcesAndTorques)
+{
+    unsigned int		i	=	0;
+
+    pthread_mutex_lock(&(this->MutexForControlData));
+    for (i = 0; i < FRI_CART_VEC; i++)
+    {
+        EstimatedExternalCartForcesAndTorques[i]	=	this->ReadData.data.estExtTcpFT[i];
+    }
+    pthread_mutex_unlock(&(this->MutexForControlData));
+
+    return;
 }
 
