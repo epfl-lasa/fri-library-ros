@@ -48,8 +48,18 @@
 #endif // WIN32
 
 
-friUdp::friUdp(int port, char * remoteHost) : serverPort(port)
+friUdp::friUdp(int port, char * remoteHost)
 {
+    char* robot_port = getenv("ROBOT_PORT");
+    if (robot_port == NULL)
+    {
+      serverPort = port;
+    }
+    else
+    {
+      serverPort = atoi(robot_port);
+    }
+
 	   /* check struct sizes */
     if (!FRI_CHECK_SIZES_OK)
     {
